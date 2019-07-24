@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {})
   Layout.associate = function(models) {
     // associations can be defined here
+    Layout.hasMany(models.Hole)
   }
   return Layout
 }
