@@ -11,7 +11,7 @@ function Home() {
         </thead>
       </table>
     </>
-  );
+  )
 }
 
-export default Home;
+export default Home
