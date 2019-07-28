@@ -1,7 +1,7 @@
 'use strict'
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Holes', {
+    return queryInterface.createTable('hole', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -17,6 +17,15 @@ module.exports = {
       distance: {
         type: Sequelize.DECIMAL
       },
+      layout_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'layout',
+          key: 'id',
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade',
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -28,6 +37,6 @@ module.exports = {
     })
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Holes')
+    return queryInterface.dropTable('hole')
   }
 }

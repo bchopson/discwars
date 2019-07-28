@@ -1,7 +1,7 @@
 'use strict'
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Layouts', {
+    return queryInterface.createTable('layout', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,6 +10,15 @@ module.exports = {
       },
       tee_color: {
         type: Sequelize.STRING
+      },
+      course_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'course',
+          key: 'id',
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade',
       },
       createdAt: {
         allowNull: false,
@@ -22,6 +31,6 @@ module.exports = {
     })
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Layouts')
+    return queryInterface.dropTable('layout')
   }
 }
